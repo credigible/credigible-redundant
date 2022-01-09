@@ -1,0 +1,4 @@
+*.swp
+*.swo
+server/node_modules/
+server/build/
