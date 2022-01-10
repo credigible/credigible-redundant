@@ -5,8 +5,14 @@ Plan is to have backend, frontend and flutter in the same repo because
 3) Some PRs might be full stack in nature.
 
 ## Development
-To run the development build of credigible, build the local docker compose first    
-`./develop.sh build`    
+First of all make sure `docker` and `docker-compose` are both installed     
+To run the development build of credigible, build the local docker compose first
+```bash
+./develop.sh build
+```    
 If trouble arises, make sure to `chmod +x ./develop.sh` first     
-After that do a `./develop.sh up`    
-*Remember*, anything succeeding `./develop.sh` is a `docker-compose` command, hence you can give all sort of valid `docker-compose` command to it
+After that do this
+```bash
+./develop.sh up
+```
+**Remember**, anything succeeding `./develop.sh` is a `docker-compose` command, hence you can give all sort of valid `docker-compose` command to it
