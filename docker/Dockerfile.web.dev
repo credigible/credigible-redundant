@@ -1,0 +1,7 @@
+#Development
+FROM node:16-alpine as builder
+WORKDIR /usr/web
+COPY web/package*.json ./
+RUN npm install
+COPY ./web .
+CMD npm run dev

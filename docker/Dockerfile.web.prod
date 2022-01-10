@@ -1,0 +1,18 @@
+#Production
+FROM node:16-alpine as builder
+WORKDIR /usr/web
+COPY web/package*.json ./
+RUN npm install
+COPY ./web .
+RUN npm run build
+
+FROM node:16-alpine as credigible-web-production
+WORKDIR /usr/web
+COPY web/package*.json ./
+RUN npm install --production
+COPY --from=builder /usr/web/.next ./.next
+
+#Have to later put copying of env variables to stage 2
+
+EXPOSE 3000
+CMD npm start
