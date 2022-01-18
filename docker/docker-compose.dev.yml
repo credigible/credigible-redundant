@@ -7,7 +7,7 @@ services:
         volumes:
             - ../server:/usr/server
         ports:
-            - "4000:3000"
+            - "4000:4000"
 
     web:
         build:
