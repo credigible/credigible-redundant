@@ -16,6 +16,8 @@ module.exports = {
   ],
   rules: {
     'no-unused-vars': 'off',
+    'class-methods-use-this': 'off', // bad practice but type-graphql doesnt support static methods
+    'max-classes-per-file': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',

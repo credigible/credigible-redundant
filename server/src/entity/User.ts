@@ -1,16 +1,36 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity, PrimaryGeneratedColumn, Column, BaseEntity,
+} from 'typeorm';
+import { ObjectType, Field } from 'type-graphql';
 
-@Entity()
-export default class User {
-    @PrimaryGeneratedColumn()
-    id: number;
+@ObjectType()
+@Entity('user')
+export default class User extends BaseEntity {
+  // Should not be a field, we don't want to share it mp
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column()
-    firstName: string;
+  @Field()
+  @Column({
+    unique: true,
+  })
+  email: string;
 
-    @Column()
-    lastName: string;
+  @Column()
+  password: string;
 
-    @Column()
-    age: number;
+  @Column({
+    nullable: true,
+  })
+  firstName: string | null;
+
+  @Column({
+    nullable: true,
+  })
+  lastName: string | null;
+
+  @Column({
+    nullable: true,
+  })
+  age: number | null;
 }
