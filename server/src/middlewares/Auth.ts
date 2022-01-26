@@ -7,9 +7,6 @@ import User from '../entity/User';
 const logger = console;
 
 export const GQLAuth: MiddlewareFn<AppContext> = async ({ context }, next) => {
-  // Authorization header (or any header) can be string[]?
-  // Intellisense and tsc showed that, weird huh?
-  // TODO: Look into it more, code looks weird af
   const header = context.req.headers.authorization;
   if (!header) {
     throw new Error('No Authorization Header');

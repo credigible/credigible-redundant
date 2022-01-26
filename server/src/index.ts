@@ -3,8 +3,10 @@ import { createConnection } from 'typeorm';
 import express, { Request, Response, NextFunction } from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
+import cookieParser = require('cookie-parser');
 import User from './entity/User';
 import AuthResolver from './Resolvers/AuthResolver';
+import AuthRouter from './routes/Auth';
 
 require('dotenv').config();
 
@@ -13,6 +15,9 @@ const logger = console;
 
 const app = express();
 const port = 4000;
+
+app.use(cookieParser());
+app.use(AuthRouter);
 
 app.get('/', async (req: Request, res: Response, next: NextFunction) => {
   res.status(200).json({ Credigible: 'Success' });

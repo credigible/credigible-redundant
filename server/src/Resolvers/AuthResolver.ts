@@ -5,11 +5,11 @@ import {
 // TODO: better hashing library??
 // argon2 doesn't seem to work :/
 import { hash, compare } from 'bcryptjs';
-import { sign } from 'jsonwebtoken';
 import User from '../entity/User';
 import { LoginResponse, RegisterResponse } from './AuthResolver.types';
 import { AppContext } from '../types';
 import { GQLAuth } from '../middlewares/Auth';
+import { createRefreshToken, createAccessToken, sendRefreshTokenCookie } from '../utils/utils';
 
 // TODO: Better logger
 const logger = console;
@@ -70,22 +70,10 @@ export default class UserResolver {
       throw new Error('Wrong password');
     }
 
-    // TODO: cleanup by making methods for tokens
-
-    res.cookie('_crid', sign({
-      userID: user.id,
-    }, process.env.REFRESH_TOKEN_SECRET_KEY, {
-      expiresIn: process.env.REFRESH_TOKEN_LIFE,
-    }), {
-      httpOnly: true, // TODO: path and domain options
-    });
+    sendRefreshTokenCookie(res, createRefreshToken(user.id));
 
     return {
-      accessToken: sign({
-        userID: user.id,
-      }, process.env.JWT_SECRET_KEY, {
-        expiresIn: process.env.JWT_TOKEN_LIFE,
-      }),
+      accessToken: createAccessToken(user.id),
     };
   }
 
