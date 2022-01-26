@@ -7,6 +7,7 @@ import cookieParser = require('cookie-parser');
 import User from './entity/User';
 import AuthResolver from './Resolvers/AuthResolver';
 import AuthRouter from './routes/Auth';
+import { RESTAuth } from './middlewares/Auth';
 
 require('dotenv').config();
 
@@ -19,9 +20,17 @@ const port = 4000;
 app.use(cookieParser());
 app.use(AuthRouter);
 
+// Development Test endpoints //
+
 app.get('/', async (req: Request, res: Response, next: NextFunction) => {
   res.status(200).json({ Credigible: 'Success' });
 });
+
+app.get('/test', RESTAuth, async (req, res, next) => {
+  res.status(200).json({ hi: (req.user as User).email });
+});
+
+// Development Test endpoints //
 
 const main = async () => {
   const apolloServer = new ApolloServer({
@@ -44,18 +53,3 @@ const main = async () => {
 };
 
 main();
-// createConnection().then(async (connection) => {
-// console.log('Inserting a new user into the database...');
-// const user = new User();
-// user.firstName = 'Timber';
-// user.lastName = 'Saw';
-// user.age = 25;
-// await connection.manager.save(user);
-// console.log(`Saved a new user with id: ${user.id}`);
-
-// console.log('Loading users from the database...');
-// const users = await connection.manager.find(User);
-// console.log('Loaded users: ', users);
-
-// console.log('Here you can setup and run express/koa/any other framework.');
-// }).catch((error) => console.log(error));
