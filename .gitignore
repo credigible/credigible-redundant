@@ -2,3 +2,4 @@
 *.swo
 server/node_modules/
 server/build/
+*.env
