@@ -4,21 +4,39 @@ import express, { Request, Response, NextFunction } from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import cookieParser = require('cookie-parser');
+import passport from 'passport';
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import User from './entity/User';
 import AuthResolver from './Resolvers/AuthResolver';
 import AuthRouter from './routes/Auth';
 import { RESTAuth } from './middlewares/Auth';
+import logger from './utils/logger';
 
 require('dotenv').config();
-
-// TODO: Implement a proper logger
-const logger = console;
 
 const app = express();
 const port = 4000;
 
 app.use(cookieParser());
 app.use(AuthRouter);
+
+// passport google oauth
+passport.use(new GoogleStrategy(
+  {
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: `${process.env.API_ROOT}/oauth/google`,
+  },
+  ((accessToken, refreshToken, profile, cb) => {
+    const user = {
+      email: profile.emails[0].value,
+      // eslint-disable-next-line
+      name: profile._json.name,
+    };
+    cb(null, user);
+  }),
+));
+app.use(passport.initialize());
 
 // Development Test endpoints //
 

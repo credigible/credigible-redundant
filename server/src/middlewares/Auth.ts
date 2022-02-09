@@ -3,9 +3,7 @@ import { verify } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import { AppContext, PayloadType } from '../types';
 import User from '../entity/User';
-
-// TODO: better logger
-const logger = console;
+import logger from '../utils/logger';
 
 export const GQLAuth: MiddlewareFn<AppContext> = async ({ context }, next) => {
   const header = context.req.headers.authorization;
@@ -37,7 +35,8 @@ export const RESTAuth = async (req: Request, res: Response, next: NextFunction) 
     req.user = await User.findOne({ id: payload.userID });
   } catch (err) {
     logger.warn(err);
-    throw new Error('Bad Authorization Header');
+    // TODO: unify error messages
+    res.status(401).json({ status: 'Error', message: 'Bad Token' });
   }
   return next();
 };

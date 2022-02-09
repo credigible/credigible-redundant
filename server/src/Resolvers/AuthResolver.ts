@@ -10,9 +10,7 @@ import { LoginResponse, RegisterResponse } from './AuthResolver.types';
 import { AppContext } from '../types';
 import { GQLAuth } from '../middlewares/Auth';
 import { createRefreshToken, createAccessToken, sendRefreshTokenCookie } from '../utils/utils';
-
-// TODO: Better logger
-const logger = console;
+import logger from '../utils/logger';
 
 @Resolver()
 export default class UserResolver {

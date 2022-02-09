@@ -13,3 +13,8 @@ export interface PayloadType {
   iat: number;
   exp: number;
 }
+
+export interface UserOAuth {
+  email: string;
+  name: string;
+}
