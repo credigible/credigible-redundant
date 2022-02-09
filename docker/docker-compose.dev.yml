@@ -1,5 +1,19 @@
 services:
+    db:
+        image: mariadb:10.7
+        volumes:
+            - db_data:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: test
+            MYSQL_DATABASE: test
+            MYSQL_USER: test
+            MYSQL_PASSWORD: test
+        ports:
+            - 3306:3306
     server:
+        depends_on:
+            - db
         build:
             context: ..
             dockerfile: docker/Dockerfile.server.dev
@@ -7,7 +21,7 @@ services:
         volumes:
             - ../server:/usr/server
         ports:
-            - "4000:3000"
+            - "4000:4000"
 
     web:
         build:
@@ -18,3 +32,6 @@ services:
             - ../web:/usr/web
         ports:
             - "3000:3000"
+
+volumes:
+    db_data: {}

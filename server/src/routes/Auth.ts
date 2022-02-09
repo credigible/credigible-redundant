@@ -1,0 +1,17 @@
+import { Router } from 'express';
+import passport from 'passport';
+import { refreshToken, OAuthController } from '../controllers/Auth';
+
+const AuthRouter = Router();
+
+AuthRouter.post('/refreshToken', refreshToken);
+
+AuthRouter.get('/auth/google', passport.authenticate('google', { session: false, scope: ['profile', 'email'] }));
+
+AuthRouter.get(
+  '/oauth/google',
+  passport.authenticate('google', { session: false, failureRedirect: '/auth/google', failureMessage: true }),
+  OAuthController,
+);
+
+export default AuthRouter;
