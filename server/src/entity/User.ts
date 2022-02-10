@@ -29,8 +29,72 @@ export default class User extends BaseEntity {
   })
   lastName: string | null;
 
+  @Field()
+  @Column()
+  userName:string;
+
+  @Field()
   @Column({
     nullable: true,
   })
   age: number | null;
+
+  // not sure about this one , tried SVGElement and HTMLElement but didnt worked
+  @Column({
+    nullable: true,
+  })
+  profilePicture : string | null;
+
+  @Field()
+  @Column({
+    nullable: true,
+  })
+  phoneNumber: string | null;
+
+  @Column({
+    nullable: true,
+  })
+  educationalInstitute: string | null;
+
+  @Column({
+    nullable: true,
+  })
+  course: string | null;
+
+  @Column({
+    nullable: true,
+  })
+  state: string | null;
+
+  @Field()
+  @Column()
+  ban: boolean;
+
+  @Column()
+  userCreated: Date ;
+
+  @Column()
+  lastLogin : Date;
+
+  @Field()
+  @Column()
+  gender: string;
+
+  @Field()
+  @Column({
+    nullable: true,
+  })
+  upi:string | null;
+
+  @Field()
+  @Column({
+    nullable: true,
+  })
+  credit :string | null;
+
+  @Field()
+  @Column({
+    nullable: true,
+  })
+  debit:string;
 }
