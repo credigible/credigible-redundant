@@ -31,7 +31,7 @@ export default class User extends BaseEntity {
 
   @Field()
   @Column()
-  userName:string;
+  userName: string;
 
   @Field()
   @Column({
@@ -43,7 +43,7 @@ export default class User extends BaseEntity {
   @Column({
     nullable: true,
   })
-  profilePicture : string | null;
+  profilePicture: string | null;
 
   @Field()
   @Column({
@@ -67,34 +67,40 @@ export default class User extends BaseEntity {
   state: string | null;
 
   @Field()
-  @Column()
+  @Column({
+    default: false,
+  })
   ban: boolean;
 
-  @Column()
-  userCreated: Date ;
+  @Column({
+    default: () => new Date(Date.now()),
+  })
+  userCreated: Date;
 
-  @Column()
-  lastLogin : Date;
+  @Column({
+    default: () => new Date(Date.now()),
+  })
+  lastLogin: Date;
 
   @Field()
   @Column()
-  gender: string;
+  gender: number;
 
   @Field()
   @Column({
     nullable: true,
   })
-  upi:string | null;
+  upi: string | null;
 
   @Field()
   @Column({
     nullable: true,
   })
-  credit :string | null;
+  credit: string | null;
 
   @Field()
   @Column({
     nullable: true,
   })
-  debit:string;
+  debit: string;
 }
