@@ -83,7 +83,7 @@ export default class User extends BaseEntity {
   lastLogin: Date;
 
   @Field()
-  @Column()
+  @Column('int')
   gender: number;
 
   @Field()

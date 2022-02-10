@@ -14,10 +14,14 @@ export default class Team extends BaseEntity {
   teamName: string
 
   @Field()
-  @Column()
+  @Column({
+    default: false,
+  })
   sameInstitution:Boolean
 
   @Field()
-  @Column()
+  @Column({
+    default: () => new Date(Date.now()),
+  })
   created: Date
 }
