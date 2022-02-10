@@ -21,7 +21,8 @@ export default class Team extends BaseEntity {
 
   @Field()
   @Column({
-    default: () => new Date(Date.now()),
+    type: 'datetime',
+    default: () => 'NOW()',
   })
   created: Date
 }

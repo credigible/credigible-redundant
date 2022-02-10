@@ -73,12 +73,14 @@ export default class User extends BaseEntity {
   ban: boolean;
 
   @Column({
-    default: () => new Date(Date.now()),
+    type: 'datetime',
+    default: () => 'NOW()',
   })
   userCreated: Date;
 
   @Column({
-    default: () => new Date(Date.now()),
+    type: 'datetime',
+    default: () => 'NOW()',
   })
   lastLogin: Date;
 
