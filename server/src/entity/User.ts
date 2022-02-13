@@ -1,10 +1,9 @@
 import {
-  Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToOne, ManyToMany, JoinTable,
+  Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToOne, ManyToMany, JoinTable, ManyToOne,
 } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
 import Achievement from './Achievement';
-import UserTeam from './UserTeam';
-import EventIndividual from './EventIndividual';
+import { EventIndividual, UserTeam } from './ManytoMany';
 
 @ObjectType()
 @Entity('user')
@@ -112,9 +111,9 @@ export default class User extends BaseEntity {
   @OneToOne(() => Achievement, (achievement) => achievement.user)
   achievement: Achievement
 
-  @ManyToMany(() => UserTeam, (userTeam) => userTeam.user)
+  @ManyToOne(() => UserTeam, (userTeam) => userTeam.user)
   userTeam:UserTeam[]
 
-  @ManyToMany(() => EventIndividual, (eventIndividual) => eventIndividual.user)
+  @ManyToOne(() => EventIndividual, (eventIndividual) => eventIndividual.user)
   eventIndividual:EventIndividual[]
 }

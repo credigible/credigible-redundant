@@ -1,5 +1,5 @@
 import {
-  Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany,
+  Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany, ManyToOne,
 } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
 import UserTeam from './UserTeam';
@@ -28,9 +28,9 @@ export default class Team extends BaseEntity {
   })
   created: Date
 
-  @ManyToMany(() => UserTeam, (userTeam) => userTeam.team)
+  @ManyToOne(() => UserTeam, (userTeam) => userTeam.team)
   userTeam :UserTeam[]
 
-  @ManyToMany(() => EventTeam, (eventTeam) => eventTeam.team)
+  @ManyToOne(() => EventTeam, (eventTeam) => eventTeam.team)
   eventTeam :EventTeam[]
 }

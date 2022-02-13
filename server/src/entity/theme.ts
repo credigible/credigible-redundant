@@ -1,8 +1,8 @@
 import {
-  Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany,
+  Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToMany, ManyToOne,
 } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
-import ThemeEvent from './ThemeEvent';
+import { ThemeEvent } from './ManytoMany';
 
 @ObjectType()
 @Entity('theme')
@@ -16,6 +16,6 @@ export default class Theme extends BaseEntity {
     })
     name: string;
 
-    @ManyToMany(() => ThemeEvent, (themeEvent) => themeEvent.theme)
+    @ManyToOne(() => ThemeEvent, (themeEvent) => themeEvent.theme)
     themeEvent:ThemeEvent[]
 }
