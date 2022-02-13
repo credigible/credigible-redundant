@@ -1,5 +1,5 @@
 import {
-  Entity, Column, BaseEntity, ManyToMany, JoinTable, ManyToOne,
+  Entity, Column, BaseEntity, ManyToOne,
 } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
 import Team from './Team';
