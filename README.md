@@ -6,6 +6,7 @@ Plan is to have backend, frontend and flutter in the same repo because
 
 ## Development
 First of all make sure `docker` and `docker-compose` are both installed     
+Also make sure that you have set up your `.env` file in `./server` properly       
 To run the development build of credigible, build the local docker compose first
 ```bash
 ./develop.sh build
