@@ -43,7 +43,7 @@ export default class UserResolver {
         email,
         password: hashedPassword,
       });
-      return { status: 'success' };
+      return { status: 'success', description: 'Successfully registered' };
     } catch (err) {
       logger.warn(err);
       return { status: 'error', description: String(err) };
@@ -68,13 +68,25 @@ export default class UserResolver {
       throw new Error('Wrong password');
     }
 
+    // Check Ban
+    if (user.ban) {
+      throw new Error('User Banned');
+    }
+
+    // Update Last Login
+    await User.createQueryBuilder().update({ lastLogin: new Date() }).where({
+      id: user.id,
+    }).execute();
+
     sendRefreshTokenCookie(res, createRefreshToken(user.id));
 
     return {
+      status: 'success',
       accessToken: createAccessToken(user.id),
     };
   }
 
+  // Test, shouldn't go in production
   @Query(() => [User])
   users() {
     return User.find();

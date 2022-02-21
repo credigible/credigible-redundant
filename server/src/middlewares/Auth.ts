@@ -26,17 +26,18 @@ export const RESTAuth = async (req: Request, res: Response, next: NextFunction) 
   const header = req.headers.authorization;
   if (!header) {
     res.status(401).json({ status: 'error', message: 'No Authorization Header' });
-    return next();
+    return undefined;
   }
 
   try {
     const token = header.split('Bearer ')[1];
     const payload = verify(token, process.env.JWT_SECRET_KEY) as PayloadType;
     req.user = await User.findOne({ id: payload.userID });
+    return next();
   } catch (err) {
     logger.warn(err);
     // TODO: unify error messages
     res.status(401).json({ status: 'Error', message: 'Bad Token' });
+    return undefined;
   }
-  return next();
 };

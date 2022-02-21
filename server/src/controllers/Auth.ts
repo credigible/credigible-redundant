@@ -44,16 +44,33 @@ export async function OAuthController(req: Request, res: Response) {
     // User is not registered
     try {
       await User.insert({
-        email: user.email,
+        email: reqUser.email,
         password: '',
         firstName: reqUser.name,
       });
       const newUser = await User.findOne({ where: { email: reqUser.email } });
       sendRefreshTokenCookie(res, createRefreshToken(newUser.id));
+      res.redirect(process.env.FE_ROOT);
     } catch (err) {
       // TODO: error page
+      logger.log(err);
       res.redirect(process.env.FE_ROOT);
     }
+  } else {
+    // User is registered
+    const existingUser = await User.findOne({ where: { email: reqUser.email } });
+
+    // Check Ban
+    if (user.ban) {
+      res.status(400).json({ status: 'User Banned' });
+    }
+
+    // Update Last Login
+    await User.createQueryBuilder().update({ lastLogin: new Date() }).where({
+      id: existingUser.id,
+    }).execute();
+
+    sendRefreshTokenCookie(res, createRefreshToken(existingUser.id));
+    res.redirect(process.env.FE_ROOT);
   }
-  res.redirect(process.env.FE_ROOT);
 }
