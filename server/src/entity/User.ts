@@ -30,8 +30,8 @@ export default class User extends BaseEntity {
   lastName: string | null;
 
   @Field()
-  @Column()
-  userName: string;
+  @Column({ default: '' })
+  username: string;
 
   @Field()
   @Column({
@@ -85,7 +85,7 @@ export default class User extends BaseEntity {
   lastLogin: Date;
 
   @Field()
-  @Column('int')
+  @Column({ type: 'int', default: -1 })
   gender: number;
 
   @Field()
