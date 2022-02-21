@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [[ ! -d "docker" ]]; then
     echo "This script must be run from the top level directory of the source."
     exit -1
