@@ -18,6 +18,9 @@ require('dotenv').config();
 const app = express();
 const port = 4000;
 
+// middleware
+app.use(express.json());
+app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(AuthRouter);
 app.use(ProfileRouter);
