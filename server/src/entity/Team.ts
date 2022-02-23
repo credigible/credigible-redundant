@@ -1,7 +1,8 @@
 import {
-  Entity, PrimaryGeneratedColumn, Column, BaseEntity,
+  Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany,
 } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
+import { EventTeam, UserTeam } from './ManytoMany';
 
 @ObjectType()
 @Entity('team')
@@ -25,4 +26,10 @@ export default class Team extends BaseEntity {
     default: () => 'NOW()',
   })
   created: Date
+
+  @OneToMany(() => UserTeam, (userTeam) => userTeam.team)
+  userTeam :UserTeam[]
+
+  @OneToMany(() => EventTeam, (eventTeam) => eventTeam.team)
+  eventTeam :EventTeam[]
 }
