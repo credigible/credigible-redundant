@@ -1,5 +1,5 @@
 import {
-  Entity, Column, BaseEntity, ManyToOne,
+  Entity, Column, BaseEntity, ManyToOne, PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
 import Team from './Team';
@@ -10,6 +10,9 @@ import Theme from './theme';
 @ObjectType()
 @Entity('userteam')
 class UserTeam extends BaseEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
   @ManyToOne(() => Team, (team) => team.userTeam)
   team:Team
 
@@ -27,6 +30,9 @@ class UserTeam extends BaseEntity {
 @ObjectType()
 @Entity('eventteam')
 class EventTeam extends BaseEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
   @ManyToOne(() => Team, (team) => team.eventTeam)
   team:Team
 
@@ -44,6 +50,9 @@ class EventTeam extends BaseEntity {
 @ObjectType()
 @Entity('themeevent')
 class ThemeEvent extends BaseEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
   @ManyToOne(() => Theme, (theme) => theme.themeEvent)
   theme:Theme
 
@@ -54,6 +63,9 @@ class ThemeEvent extends BaseEntity {
 @ObjectType()
 @Entity('eventindividual')
 class EventIndividual extends BaseEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
   @ManyToOne(() => User, (user) => user.eventIndividual)
   user:User
 

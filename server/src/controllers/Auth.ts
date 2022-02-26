@@ -6,7 +6,6 @@ import { PayloadType, UserOAuth } from '../types';
 import User from '../entity/User';
 import logger from '../utils/logger';
 
-/* eslint-disable import/prefer-default-export */
 export async function refreshToken(req: Request, res: Response, next: NextFunction) {
   // eslint-disable-next-line no-underscore-dangle
   const token = req.cookies._crid;
@@ -28,7 +27,7 @@ export async function refreshToken(req: Request, res: Response, next: NextFuncti
     throw err;
   }
 }
-/* eslint-enable import/prefer-default-export */
+
 export async function OAuthController(req: Request, res: Response) {
   // If user doesn't exist, sign him up with password field ''
   // A primitive way to show in database that the person signed up using OAuth2

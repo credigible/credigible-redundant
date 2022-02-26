@@ -9,6 +9,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import User from './entity/User';
 import AuthResolver from './Resolvers/AuthResolver';
 import AuthRouter from './routes/Auth';
+import AnalyticsRouter from './routes/Analytics';
 import { RESTAuth } from './middlewares/Auth';
 import logger from './utils/logger';
 import ProfileRouter from './routes/Profile';
@@ -24,6 +25,7 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(AuthRouter);
 app.use(ProfileRouter);
+app.use(AnalyticsRouter);
 
 // passport google oauth
 passport.use(new GoogleStrategy(
