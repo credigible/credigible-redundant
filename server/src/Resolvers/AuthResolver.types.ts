@@ -6,6 +6,7 @@ import {
 export class LoginResponse {
   @Field()
   status: string;
+
   @Field()
   accessToken: string;
 }
