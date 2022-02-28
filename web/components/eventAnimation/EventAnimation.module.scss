@@ -1,0 +1,64 @@
+.container{
+    // border: 1px solid #fff;
+    width:500px;
+    height:100px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+    h1{
+        font-size: 5rem;
+        transform: translate(0,-30px);
+        animation:event 4.5s infinite ;
+    }
+
+    // @keyframes event {
+    //     0%{
+    //         transform: translate(0,-30px);
+    //     }
+    //     31%{
+    //         transform: translate(0,-30px);
+    //     }
+    //     32%{
+    //         opacity:0;
+    //     }
+    //     33%{
+    //         transform: translate(0, -130px);
+    //         opacity:0;
+    //     }
+    //     34%{
+    //         transform: translate(0, -130px);
+    //         opacity: 1;
+    //     }
+    //     64%{
+    //         transform: translate(0, -130px);
+    //     }
+    //     65%{
+    //         opacity: 0;
+    //     }
+    //     66%{
+    //         transform:translate(0,-240px);
+    //     }
+    //     67%{
+    //         opacity: 1;
+    //     }
+    //     98%{
+    //         transform:translate(0,-240px);
+    //     }
+    //     99%{
+    //         opacity:0;
+    //     }
+    //     100%{
+    //         transform:translate(0,-350px);
+    //     }
+    // }
+    @keyframes event{
+        33%{
+            transform: translate(0,-130px);
+        }
+        66%{
+            transform: translate(0,-240px);
+        }
+        100%{
+            transform: translate(0,-350px);
+        }
+    }
+}
