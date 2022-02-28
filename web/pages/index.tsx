@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
 import Logo from '../components/logo/logo';
 import Qrcard from '../components/qrcode/Qrcard';
+import EventAnimation from '../components/eventAnimation/EventAnimation';
 
 const Home: NextPage = () => (
   <div>
@@ -30,9 +31,7 @@ const Home: NextPage = () => (
             Upcoming platform for
           </h3>
 
-          <h2>
-            Hackathons
-          </h2>
+         <EventAnimation/>
 
           <div className={styles.inputEmail}>
             <input type="email" placeholder="Enter Email to get notfied" />

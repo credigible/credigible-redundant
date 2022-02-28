@@ -1,12 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Poppins:wght@400;500;700&display=swap');
+
+
 .container{
     // border: 1px solid #fff;
-    width:500px;
-    height:100px;
+    width:700px;
+    height:120px;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    margin-top: -5rem;
 
     h1{
         font-size: 5rem;
-        transform: translate(0,-30px);
+        transform: translate(0,0px);
+        font-family:'Poppins', sans-serif;
         animation:event 4.5s infinite ;
     }
 
