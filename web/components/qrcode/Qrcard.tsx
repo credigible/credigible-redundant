@@ -28,7 +28,7 @@ const Qrcard = () => (
       </svg>
       <span className={styles.light}>&emsp; Certificate </span>
       <img
-        src="logo.svg"
+        src="logo-white.svg"
         alt="logo"
       />
     </section>
