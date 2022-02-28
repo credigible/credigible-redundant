@@ -53,6 +53,7 @@ export default class User extends BaseEntity {
   })
   phoneNumber: string | null;
 
+  @Field()
   @Column({
     nullable: true,
   })
