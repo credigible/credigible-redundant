@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 // import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
+import Logo from '../components/logo/logo';
 
 const Home: NextPage = () => (
   <div>
@@ -14,7 +15,7 @@ const Home: NextPage = () => (
 
     <section className={styles.sectionCenter}>
       <h1 className={styles.title}>
-        Credigible
+        <Logo />
       </h1>
 
       <main className={styles.container}>
