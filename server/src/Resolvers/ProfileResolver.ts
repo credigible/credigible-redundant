@@ -37,7 +37,7 @@ export default class ProfileResolver {
   ):Promise<PasswordResetResponse> {
     try {
       const responseObject = {
-        password,
+        password: await hash(password, 12),
         firstName,
         lastName,
         username,
