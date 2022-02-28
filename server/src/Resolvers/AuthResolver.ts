@@ -46,7 +46,7 @@ export default class UserResolver {
       return { status: 'success', description: 'Successfully registered' };
     } catch (err) {
       logger.warn(err);
-      return { status: 'error', description: String(err) };
+      return { status: 'error', description: 'Something went wrong' };
     }
   }
 

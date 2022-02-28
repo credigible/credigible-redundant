@@ -13,6 +13,7 @@ import AnalyticsRouter from './routes/Analytics';
 import { RESTAuth } from './middlewares/Auth';
 import logger from './utils/logger';
 import ProfileRouter from './routes/Profile';
+import ProfileResolver from './Resolvers/ProfileResolver';
 
 require('dotenv').config();
 
@@ -62,6 +63,7 @@ const main = async () => {
     schema: await buildSchema({
       resolvers: [
         AuthResolver,
+        ProfileResolver,
       ],
     }),
     context: ({ req, res, next }) => ({ req, res, next }),
