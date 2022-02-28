@@ -58,7 +58,7 @@ export default class ProfileResolver {
       return { status: 'success', description: 'Successfully changed details' };
     } catch (error) {
       logger.warn(error);
-      return { status: 'error', description: String(error) };
+      return { status: 'error', description: 'Something went wrong' };
     }
   }
 }
