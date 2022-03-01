@@ -1,7 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-// import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
 import Logo from '../components/logo/logo';
 import Qrcard from '../components/qrcode/Qrcard';
@@ -15,14 +13,13 @@ const Home: NextPage = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <section className={styles.watermark}>
-      <img src="/watermark.svg" alt="" />
-    </section>
-
     <section className={styles.sectionCenter}>
-      <h1 className={styles.title}>
+      <div className={styles.logo}>
         <Logo />
-      </h1>
+      </div>
+      <section className={styles.watermark}>
+        <img src="/watermark.svg" alt="" />
+      </section>
 
       <main className={styles.container}>
 
@@ -31,7 +28,7 @@ const Home: NextPage = () => (
             Upcoming platform for
           </h3>
 
-         <EventAnimation/>
+          <EventAnimation />
 
           <div className={styles.inputEmail}>
             <input type="email" placeholder="Enter Email to get notfied" />
@@ -55,20 +52,19 @@ const Home: NextPage = () => (
               together, right ?
             </p>
 
-            <div>
-              <Image
+            <button type="button">
+              <img
                 src="/discord.svg"
                 alt="discord"
-                width={50}
-                height={50}
               />
 
               <h4>Join Now</h4>
-            </div>
+            </button>
           </div>
         </aside>
-
-        <Qrcard/>
+        <div className={styles.qrcard}>
+          <Qrcard />
+        </div>
       </main>
     </section>
   </div>
