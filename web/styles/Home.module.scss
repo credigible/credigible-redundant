@@ -30,7 +30,7 @@ $dark: #24487e;
   margin:0 0 0 3rem;
   h3{
     margin:0;
-    font-size:4.5rem;
+    font-size:72px;
     font-weight:400;
     font-family:'Poppins', sans-serif;
   }
@@ -67,7 +67,7 @@ $dark: #24487e;
     color: #25497F;
     width:60%;
     padding:0 0.3rem;
-    font-size: 2rem;
+    font-size: 32px;
     font-weight:500;
     font-family: 'Poppins', sans-serif;
   // &:focus , &:active{
@@ -82,7 +82,7 @@ $dark: #24487e;
     background-color: #182E4E;
     color: white;
     border-radius: 1.5rem;
-    font-size:1.5rem;
+    font-size: 24px;;
     font-weight:bold;
     font-family: 'Montserrat', sans-serif;
     padding: 1rem 2rem;
@@ -100,7 +100,7 @@ $dark: #24487e;
     display: block;
     bottom: -39px;
     left: 50px;
-    font-size: 1.5rem;
+    font-size: 24px;
       font-weight: 500;
       font-family: 'Poppins', sans-serif;
   }
@@ -125,13 +125,13 @@ $dark: #24487e;
   p{
     line-height: 1.4;
     font-weight:600;
-    font-size:1.625rem;
+    font-size:28px;
     font-family: 'Montserrat', sans-serif;
     }
 
     span{
       font-weight: 800;
-      font-size: 1.8rem;
+      font-size: 28.8px;
       font-family: 'Montserrat', sans-serif;
   }
   button{
@@ -148,7 +148,7 @@ $dark: #24487e;
     padding: 0.5rem;
     gap: 1rem;
     border-radius: 1.5rem;
-    font-size: 1.4rem;
+    font-size: 22.4px;
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
 
@@ -165,18 +165,18 @@ $dark: #24487e;
 .watermark {
   z-index: 0;
   position: fixed;
-  top: -20rem;
+  top: 15vh;
   opacity: 80%;
   // width: 140vw;
-  left: -7rem;
-  width: 120vw;
+  left: -10vw;
+  width: 100vw;
   // height: 80vh;
   // overflow: hidden;
   // object-fit: fill;
 
   img {
-    width: 100rem;
-    height: 100rem;
+    width: 120vw;
+    // height: 100vh;
     // display: block;
   }
 }
