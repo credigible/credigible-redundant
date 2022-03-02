@@ -55,7 +55,7 @@ $dark: #24487e;
 
   width: 80%;
   background-color: white;
-  padding: 0.8rem 1.2rem;
+  padding: 0.5rem 0.5rem .5rem 1.2rem;
   border-radius: 1.5rem;
   
   margin:1rem 0;
@@ -85,12 +85,13 @@ $dark: #24487e;
     font-size: 24px;;
     font-weight:bold;
     font-family: 'Montserrat', sans-serif;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     cursor: pointer;
     // width: 400px;
     span{
       color:#0066FF;
       margin-right: 0.5rem;
+      font-size: 1.5rem;
     }
   }
 
@@ -98,9 +99,8 @@ $dark: #24487e;
     content:"*We promise we wont spam";
     position: absolute;
     display: block;
-    bottom: -39px;
-    left: 50px;
-    font-size: 24px;
+    bottom: -25px;
+    left: 25px;
       font-weight: 500;
       font-family: 'Poppins', sans-serif;
   }
@@ -118,7 +118,7 @@ $dark: #24487e;
   gap: 0.8rem;
   justify-content: center;
   align-items: center;
-  margin:5rem 0 1.9rem;
+  margin:5rem 0 .5rem;
   // overflow: hidden;
   position: relative;
 
@@ -135,7 +135,7 @@ $dark: #24487e;
       font-family: 'Montserrat', sans-serif;
   }
   button{
-    width: 40%;
+    width: fit-content;
     // width: max-content;
     color: #fff;
     background-color: rgba(45, 22, 79, 0.4);
@@ -145,7 +145,7 @@ $dark: #24487e;
     justify-content: center;
     align-items: center;
     height: max-content;
-    padding: 0.5rem;
+    padding: 0rem 1rem;
     gap: 1rem;
     border-radius: 1.5rem;
     font-size: 22.4px;
@@ -154,6 +154,7 @@ $dark: #24487e;
 
     &>h4{
       // width: min-content;
+      font-size: 1.5rem;
       text-align: center;
       white-space: nowrap;
       font-family: 'Montserrat', sans-serif;
@@ -191,5 +192,5 @@ $dark: #24487e;
 
 .qrcard{
   z-index: 2;
-  margin-bottom: -6.5rem;
+  margin-bottom: -7.5rem;
 }
