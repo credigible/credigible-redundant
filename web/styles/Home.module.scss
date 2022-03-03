@@ -8,7 +8,6 @@ $dark: #24487e;
   width: 100vw;
   margin: auto;
   // height: 90vh;
-  overflow: hidden;
   .logo{
     position: absolute;
     left: 3rem;
@@ -215,4 +214,42 @@ $dark: #24487e;
     }
   }
   
+}
+
+@media screen and (max-width : 1000px){
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width : 660px){
+  .inputEmail{
+
+    button{
+      padding:1rem 1.25rem ;
+    }
+  }
+}
+
+@media screen and (max-width: 570px) {
+
+  .inputEmail{
+    width: 90%;
+  }
+
+  .discord{
+    width: 90%;
+  }
+
+}
+
+@media screen and (max-width:540px) {
+  .containerText{
+    margin:0 1.75rem;
+  }
+
+  .qrcard{
+    margin: 3rem 1.75rem;
+  }
 }

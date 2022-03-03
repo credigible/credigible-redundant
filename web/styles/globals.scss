@@ -28,3 +28,19 @@ a {
     font-size: 14px;
   }
 }
+
+@media screen and (max-width:570px) {
+  *{
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width:540px) {
+  *{
+    font-size: 9px;
+  }
+}
+
+
+
+
