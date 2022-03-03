@@ -23,3 +23,8 @@ a {
   box-sizing: border-box;
   font-size: 16px;
 }
+@media screen and (max-width:1222px) {
+  *{
+    font-size: 14px;
+  }
+}

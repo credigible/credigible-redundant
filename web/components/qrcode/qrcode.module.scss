@@ -32,6 +32,9 @@
         background-color: #fff;
         border-radius: 22px;
         // margin: auto;
+        img{
+            max-width: 100%;
+        }
     }
 
     .desc {
@@ -52,6 +55,7 @@
 
         svg {
             margin: 0 0 0.2rem;
+            width: 10.438rem;
         }
 
         img {

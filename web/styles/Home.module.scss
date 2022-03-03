@@ -30,7 +30,7 @@ $dark: #24487e;
   margin:0 0 0 3rem;
   h3{
     margin:0;
-    font-size:72px;
+    font-size:4.5rem;
     font-weight:400;
     font-family:'Poppins', sans-serif;
   }
@@ -67,7 +67,7 @@ $dark: #24487e;
     color: #25497F;
     width:60%;
     padding:0 0.3rem;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight:500;
     font-family: 'Poppins', sans-serif;
   // &:focus , &:active{
@@ -82,7 +82,7 @@ $dark: #24487e;
     background-color: #182E4E;
     color: white;
     border-radius: 1.5rem;
-    font-size: 24px;;
+    font-size: 1.5rem;
     font-weight:bold;
     font-family: 'Montserrat', sans-serif;
     padding: 1rem 1.5rem;
@@ -125,13 +125,13 @@ $dark: #24487e;
   p{
     line-height: 1.4;
     font-weight:600;
-    font-size:28px;
+    font-size:1.75rem;
     font-family: 'Montserrat', sans-serif;
     }
 
     span{
       font-weight: 800;
-      font-size: 28.8px;
+      font-size: 1.8rem;
       font-family: 'Montserrat', sans-serif;
   }
   button{
@@ -148,7 +148,7 @@ $dark: #24487e;
     padding: 0rem 1rem;
     gap: 1rem;
     border-radius: 1.5rem;
-    font-size: 22.4px;
+    font-size: 1.4rem;
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
 
@@ -187,10 +187,32 @@ $dark: #24487e;
   position: absolute;
   opacity: 20%;
   top: 0;
+  height: 11.25rem;
+  img{
+    max-height: 100%;
+  }
   // z-index: -999;
 }
 
 .qrcard{
   z-index: 2;
   margin-bottom: -7.5rem;
+  margin-right: 3rem;
+}
+
+@media screen and (max-width:1126px) {
+  .discord{
+    p{
+      font-size: 1.25rem;
+    }
+    span{
+      font-size: 1.3rem;
+    }
+  }
+  .inputEmail{
+    input{
+      font-size: 1.5rem;
+    }
+  }
+  
 }
