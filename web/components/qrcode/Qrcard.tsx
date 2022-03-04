@@ -11,6 +11,8 @@ const Qrcard = () => (
     </section>
 
     <div className={styles.qrinfo}>
+
+    <div></div>
     <section className={styles.desc}>
       <p className={styles.light}>To:</p>
       <p className={styles.bold}>You!</p>
