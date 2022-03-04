@@ -1,7 +1,7 @@
 import { MiddlewareFn } from 'type-graphql';
 import { verify } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import { AppContext, PayloadType } from '../types';
+import { AppContext, PayloadType, AppContextEventOrganiser } from '../types';
 import User from '../entity/User';
 import logger from '../utils/logger';
 import EventOrganizer from '../entity/EventOrganiser';
@@ -43,7 +43,10 @@ export const RESTAuth = async (req: Request, res: Response, next: NextFunction) 
   }
 };
 
-export const GQLAuthEventOrganiser: MiddlewareFn<AppContext> = async ({ context }, next) => {
+export const GQLAuthEventOrganiser: MiddlewareFn<AppContextEventOrganiser> = async (
+  { context },
+  next,
+) => {
   const header = context.req.headers.authorization;
   if (!header) {
     throw new Error('No Authorization Header');
@@ -70,7 +73,7 @@ export const RESTAuthEventOrganiser = async (req: Request, res: Response, next: 
   try {
     const token = header.split('Bearer ')[1];
     const payload = verify(token, process.env.JWT_SECRET_KEY) as PayloadType;
-    req.user = await User.findOne({ id: payload.userID });
+    req.user = await EventOrganizer.findOne({ id: payload.userID });
     return next();
   } catch (err) {
     logger.warn(err);

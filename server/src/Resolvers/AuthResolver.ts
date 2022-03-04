@@ -11,6 +11,7 @@ import { AppContext } from '../types';
 import { GQLAuth } from '../middlewares/Auth';
 import { createRefreshToken, createAccessToken, sendRefreshTokenCookie } from '../utils/utils';
 import logger from '../utils/logger';
+import EventOrganizer from '../entity/EventOrganiser';
 
 @Resolver()
 export default class UserResolver {
@@ -50,6 +51,27 @@ export default class UserResolver {
     }
   }
 
+  @Mutation(() => RegisterResponse)
+  async registerEventOrganiser(
+    @Arg('email') email: string,
+    @Arg('password') password: string,
+  ) : Promise<RegisterResponse> {
+    // EventOrganizer registration
+    // @param email : unique email to sign up with, for a user
+    // @param password : password that would be stored as bcryptjs encrypted password
+    const hashedPassword = await hash(password, 12);
+    try {
+      await EventOrganizer.insert({
+        email,
+        password: hashedPassword,
+      });
+      return { status: 'success', description: 'Successfully registered' };
+    } catch (err) {
+      logger.warn(err);
+      return { status: 'error', description: 'Something went wrong' };
+    }
+  }
+
   @Mutation(() => LoginResponse)
   async login(
     @Arg('email') email: string,
@@ -75,6 +97,42 @@ export default class UserResolver {
 
     // Update Last Login
     await User.createQueryBuilder().update({ lastLogin: new Date() }).where({
+      id: user.id,
+    }).execute();
+
+    sendRefreshTokenCookie(res, createRefreshToken(user.id));
+
+    return {
+      status: 'success',
+      accessToken: createAccessToken(user.id),
+    };
+  }
+
+  @Mutation(() => LoginResponse)
+  async loginEventOrganiser(
+    @Arg('email') email: string,
+    @Arg('password') password: string,
+    @Ctx() { res }: AppContext,
+  ): Promise<LoginResponse> {
+    // EventOrganizer Login
+    // @param email : unique email with which user signed up with
+    // @param password : password that is be stored as bcryptjs encrypted password
+    const user = await EventOrganizer.findOne({ where: { email } });
+    if (!user) {
+      throw new Error("Couldn't find user");
+    }
+
+    if (!(await compare(password, user.password))) {
+      throw new Error('Wrong password');
+    }
+
+    // Check Ban
+    if (user.ban) {
+      throw new Error('User Banned');
+    }
+
+    // Update Last Login
+    await EventOrganizer.createQueryBuilder().update({ lastLogin: new Date() }).where({
       id: user.id,
     }).execute();
 

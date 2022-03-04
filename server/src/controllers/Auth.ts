@@ -5,6 +5,7 @@ import {
 import { PayloadType, UserOAuth } from '../types';
 import User from '../entity/User';
 import logger from '../utils/logger';
+import EventOrganizer from '../entity/EventOrganiser';
 
 export async function refreshToken(req: Request, res: Response, next: NextFunction) {
   // eslint-disable-next-line no-underscore-dangle
@@ -18,9 +19,33 @@ export async function refreshToken(req: Request, res: Response, next: NextFuncti
     const payload = verifyRefreshToken(token) as PayloadType;
     const user = await User.findOne({ id: payload.userID });
     if (!user) {
-      sendRefreshTokenCookie(res, createRefreshToken(user.id));
       res.status(401).json({ status: 'User not found' });
+      return;
     }
+    sendRefreshTokenCookie(res, createRefreshToken(user.id));
+    res.status(200).json({ accessToken: createAccessToken(payload.userID) });
+  } catch (err) {
+    logger.log(err);
+    throw err;
+  }
+}
+
+export async function refreshTokenEventOrganiser(req: Request, res: Response, next: NextFunction) {
+  // eslint-disable-next-line no-underscore-dangle
+  const token = req.cookies._crid;
+  if (!token) {
+    res.status(400).json({ status: 'No refreshToken' });
+    return;
+  }
+
+  try {
+    const payload = verifyRefreshToken(token) as PayloadType;
+    const user = await EventOrganizer.findOne({ id: payload.userID });
+    if (!user) {
+      res.status(401).json({ status: 'User not found' });
+      return;
+    }
+    sendRefreshTokenCookie(res, createRefreshToken(user.id));
     res.status(200).json({ accessToken: createAccessToken(payload.userID) });
   } catch (err) {
     logger.log(err);
