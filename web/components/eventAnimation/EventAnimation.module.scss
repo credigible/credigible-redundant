@@ -3,9 +3,9 @@
 
 .container{
     // border: 1px solid #fff;
-    width:700px;
-    height:120px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    width:43.75rem;
+    height:7.5rem;
+    clip-path: polygon(0 15%, 100% 15%, 100% 100%, 0 100%);
     margin-top: -5rem;
 
     h1{
@@ -57,13 +57,13 @@
     // }
     @keyframes event{
         33%{
-            transform: translate(0,-130px);
+            transform: translate(0,-8.125rem);
         }
         66%{
-            transform: translate(0,-240px);
+            transform: translate(0,-15rem);
         }
         100%{
-            transform: translate(0,-350px);
+            transform: translate(0,-21.875rem);
         }
     }
 }
