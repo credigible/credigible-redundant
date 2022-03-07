@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import ResetPassword from '../controllers/Profile';
+import { ResetPassword } from '../controllers/Profile';
 import { RESTAuth } from '../middlewares/Auth';
 
 const ProfileRouter = Router();

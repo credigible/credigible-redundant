@@ -6,80 +6,90 @@ import { ObjectType, Field } from 'type-graphql';
 @ObjectType()
 @Entity('eventOrganizer')
 export default class EventOrganizer extends BaseEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Field()
-    @Column({
-      unique: true,
-    })
-    organizationName: string;
+  @Field()
+  @Column({
+    unique: true,
+    nullable: true,
+  })
+  organizationName: string | null;
 
-    @Column()
-    address: string;
+  @Field()
+  @Column({ nullable: true })
+  address: string | null;
 
-    @Field()
-    @Column({
-      nullable: true,
-    })
-    credit: string | null;
+  @Field()
+  @Column({ default: '' })
+  username: string;
 
-    @Field()
-    @Column({
-      nullable: true,
-    })
-    debit: string | null;
+  @Column()
+  password: string;
 
-    @Field()
-    @Column({
-      nullable: true,
-    })
-    upi: string | null;
+  @Field()
+  @Column({
+    nullable: true,
+  })
+  credit: string | null;
 
-    @Column({
-      type: 'datetime',
-      default: () => 'NOW()',
-    })
-    lastLogin: Date;
+  @Field()
+  @Column({
+    nullable: true,
+  })
+  debit: string | null;
 
-    @Field()
-    @Column({
-      type: 'datetime',
-      default: () => 'NOW()',
-    })
-    created: Date;
+  @Field()
+  @Column({
+    nullable: true,
+  })
+  upi: string | null;
 
-    @Column({
-      nullable: true,
-    })
-    picture: string | null;
+  @Column({
+    type: 'datetime',
+    default: () => 'NOW()',
+  })
+  lastLogin: Date;
 
-    @Field()
-    @Column({
-      nullable: true,
-    })
-    phoneNumber: string | null;
+  @Field()
+  @Column({
+    type: 'datetime',
+    default: () => 'NOW()',
+  })
+  created: Date;
 
-    @Field()
-    @Column({
-      unique: true,
-    })
-    email: string;
+  @Column({
+    nullable: true,
+  })
+  picture: string | null;
 
-    @Column({
-      unique: true,
-    })
-    state: string;
+  @Field()
+  @Column({
+    nullable: true,
+  })
+  phoneNumber: string | null;
 
-    @Field()
-    @Column({
-      default: false,
-    })
-    ban:boolean
+  @Field()
+  @Column({
+    unique: true,
+  })
+  email: string;
 
-    @Field()
-    @Column({
-      nullable: true,
-    })
-    premiumName:string | null
+  @Column({
+    unique: true,
+    nullable: true,
+  })
+  state: string | null;
+
+  @Field()
+  @Column({
+    default: false,
+  })
+  ban:boolean
+
+  @Field()
+  @Column({
+    nullable: true,
+  })
+  premiumName:string | null
 }
