@@ -20,6 +20,10 @@ export default class EventOrganizer extends BaseEntity {
   @Column({ nullable: true })
   address: string | null;
 
+  @Field()
+  @Column({ default: '' })
+  username: string;
+
   @Column()
   password: string;
 
