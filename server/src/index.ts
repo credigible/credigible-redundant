@@ -14,6 +14,7 @@ import { RESTAuth } from './middlewares/Auth';
 import logger from './utils/logger';
 import ProfileRouter from './routes/Profile';
 import ProfileResolver from './Resolvers/ProfileResolver';
+import TeamRouter from './routes/Team';
 
 require('dotenv').config();
 
@@ -27,6 +28,7 @@ app.use(cookieParser());
 app.use(AuthRouter);
 app.use(ProfileRouter);
 app.use(AnalyticsRouter);
+app.use(TeamRouter);
 
 // passport google oauth
 passport.use(new GoogleStrategy(
