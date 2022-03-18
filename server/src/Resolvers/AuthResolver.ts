@@ -42,10 +42,6 @@ export default class UserResolver {
     // @param password : password that would be stored as bcryptjs encrypted password
     const hashedPassword = await hash(password, 12);
     try {
-      // await User.insert({
-      // email,
-      // password: hashedPassword,
-      // });
       const user = await User.findOne({ where: { email } });
       if (user) {
         throw new Error('User already exists');
