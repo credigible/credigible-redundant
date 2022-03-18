@@ -1,0 +1,10 @@
+{
+  "extends":[  "next/core-web-vitals" , "airbnb"],
+  "rules": {
+    "react/function-component-definition": "off",
+    "react/jsx-filename-extension": "off",
+    "no-use-before-define": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/extensions": "off"
+  }
+}

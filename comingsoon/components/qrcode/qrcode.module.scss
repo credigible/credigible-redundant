@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap");
+
+.bold {
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.313rem;
+}
+
+.light {
+  font-weight: 200;
+  font-size: 0.688rem;
+  line-height: 1.031rem;
+}
+.space {
+  font-size: 0.5rem;
+  line-height: 0.75rem;
+}
+.card {
+  align-self: end;
+  background: linear-gradient(
+    35.51deg,
+    rgba(98, 43, 215, 0.86) 10.5%,
+    rgba(148, 99, 209, 0.86) 82%
+  );
+  border-radius: 22px;
+  height: 30.188rem;
+  width: 19rem;
+  padding: 0.9rem;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  margin-bottom: 2rem;
+
+  .imgContainer {
+    width: 17.188rem;
+    height: 17.188rem;
+    background-color: #fff;
+    border-radius: 22px;
+    // margin: auto;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .desc {
+    margin-top: 1rem;
+    border-top: 1px solid #fff;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.313rem;
+    padding: 0.5rem 0;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .logo {
+    // margin-top: -1.25rem;
+
+    
+    svg {
+      margin: 0 0 0.2rem 0;
+      width: 65%;
+    }
+
+     img {
+      width: 1.163rem;
+      margin: 0 0 -0.3rem;
+     }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  .desc{
+    border-top: none !important;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: fit-content;
+    margin: 3rem 0 0 3rem;
+    gap: 2rem;
+
+    .qrinfo{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & > div{
+          background-color: #fff;
+          height: 1px;
+          width: 100%;
+        }
+    }
+
+    .imgContainer{
+        height: fit-content;
+    }
+
+    .logo {
+      svg {
+        width: 75%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width : 680){
+  .logo {
+     svg {
+      width: 70%;
+    }
+  }
+}
+
+@media screen and (max-width:570px) {
+    .card{
+      width: 90%;
+    }
+
+    .qrinfo{
+      div{
+        width: 95% !important;
+      }
+  }
+
+}
+  
+@media screen and (max-width:540px) {
+    .card{
+      margin:0;
+    }
+
+
+}
+    
