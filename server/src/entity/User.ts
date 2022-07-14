@@ -2,6 +2,7 @@ import {
   Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToOne, OneToMany,
 } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
+import { IsEmail } from 'class-validator';
 import Achievement from './Achievement';
 import { EventIndividual, UserTeam } from './ManytoMany';
 
@@ -16,6 +17,7 @@ export default class User extends BaseEntity {
   @Column({
     unique: true,
   })
+  @IsEmail()
   email: string;
 
   @Column()

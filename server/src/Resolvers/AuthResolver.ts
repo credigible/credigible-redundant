@@ -5,6 +5,8 @@ import {
 // TODO: better hashing library??
 // argon2 doesn't seem to work :/
 import { hash, compare } from 'bcryptjs';
+import { getManager } from 'typeorm';
+import { validate } from 'class-validator';
 import User from '../entity/User';
 import { LoginResponse, RegisterResponse } from './AuthResolver.types';
 import { AppContext } from '../types';
@@ -40,11 +42,21 @@ export default class UserResolver {
     // @param password : password that would be stored as bcryptjs encrypted password
     const hashedPassword = await hash(password, 12);
     try {
-      await User.insert({
-        email,
-        password: hashedPassword,
-      });
-      return { status: 'success', description: 'Successfully registered' };
+      const user = await User.findOne({ where: { email } });
+      if (user) {
+        throw new Error('User already exists');
+      } else {
+        const newUser = new User();
+        newUser.email = email;
+        newUser.password = hashedPassword;
+        const errors = await validate(newUser);
+        if (errors.length > 0) {
+          throw new Error(String(errors));
+        } else {
+          getManager().save(newUser);
+          return { status: 'success', description: 'Successfully registered' };
+        }
+      }
     } catch (err) {
       logger.warn(err);
       return { status: 'error', description: 'Something went wrong' };
